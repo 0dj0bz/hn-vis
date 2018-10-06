@@ -1,0 +1,88 @@
+>>> networkit.overview(g.graph)
+Network Properties for:		G_145e2d40-655c-4530-b83b-765df9ac4279
+nodes, edges			5928413, 4721322
+directed?			False
+weighted?			False
+isolated nodes			896663
+self-loops			0
+density				0.000000
+clustering coefficient		0.000000
+min/max/avg degree		0, 1314, 1.592778
+degree assortativity		0.021482
+number of connected components	1207091
+size of largest component	1760 (0.03 %)
+
+
+>>> kc = networkit.centrality.KatzCentrality(g.graph)
+>>> kc.run()
+<_NetworKit.KatzCentrality object at 0x7f52fb4b3dd8>
+
+>>> kc.ranking()[:15]
+[(910, 0.0008531194828093412), (5434116, 0.0005307667981191189), (5597765, 0.0005280745611056663), (5925561, 0.0005179625410421507), (5266615, 0.0005115632801685209), (12180, 0.0005102209962317337), (845836, 0.0005054889034026263), (5761191, 0.0005051672258910895), (2585488, 0.0005024680756752237), (4288424, 0.000500441315398661), (4560683, 0.0005004402102078475), (2384336, 0.0004981172434678633), (3620943, 0.0004977466372511729), (5333895, 0.0004971171325734858), (745740, 0.0004957710417392168)]
+
+>>> pageRank = networkit.centrality.PageRank(g.graph, 0.95, True)
+>>> pageRank.run()
+<_NetworKit.PageRank object at 0x7f907cc973c8>
+>>> pageRank.ranking()[:15]
+[(910, 0.00022593641551800757), (5434116, 6.272148488902285e-05), (5597765, 6.126340115148582e-05), (5925561, 5.654503178049698e-05), (5266615, 5.2745919785977204e-05), (845836, 5.194570026187744e-05), (12180, 5.0616011063795535e-05), (4560683, 4.768216984644825e-05), (4288424, 4.7635386411019265e-05), (5761191, 4.728918898884472e-05), (2585488, 4.687125696567903e-05), (3620943, 4.588880482167009e-05), (3878810, 4.412662875384456e-05), (4820858, 4.377419354027948e-05), (4017987, 4.336249930850429e-05)]
+
+
+>>> revNodeIdx[910]
+363
+
+>>> g.nodes[363]
+{'node': <__main__.Node object at 0x7f52c7327438>, 'properties': {'id_': 363, 'type': 'story', 'by': 'pg'}}
+>>> 
+>>> g.graph.degree(910)
+1314
+
+>>> calcSize(363)
+3519
+
+>>> revNodeIdx[5434116]
+5472746
+
+>>> g.nodes[5472746]
+{'node': <__main__.Node object at 0x7f5056b78160>, 'properties': {'id_': 5472746, 'type': 'story', 'by': 'whoishiring'}}
+
+>>> g.graph.degree(5434116)
+358
+
+>>> revNodeIdx[5597765]
+5637663
+>>> g.nodes[5637663]
+{'node': <__main__.Node object at 0x7f51854cac18>, 'properties': {'id_': 5637663, 'type': 'story', 'by': 'whoishiring'}}
+>>> g.graph.degree(5597765)
+350
+
+
+>>> g.nodes[revNodeIdx[5266615]]
+{'node': <__main__.Node object at 0x7f50688ed9b0>, 'properties': {'id_': 5304169, 'type': 'story', 'by': 'whoishiring'}}
+
+>>> g.nodes[revNodeIdx[12180]]
+{'node': <__main__.Node object at 0x7f52c6142198>, 'properties': {'id_': 9770, 'type': 'story', 'by': 'kkim'}}
+>>> g.graph.degree(12180)
+297
+
+>>> g.nodes[revNodeIdx[845836]]
+{'node': <__main__.Node object at 0x7f526646ee48>, 'properties': {'id_': 852614, 'type': 'story', 'by': 'falsestprophet'}}
+>>> g.graph.degree(845836)
+283
+
+>>> g.nodes[revNodeIdx[2384336]]
+{'node': <__main__.Node object at 0x7f51b0d61828>, 'properties': {'id_': 2403696, 'type': 'story', 'by': 'pg'}}
+>>> g.graph.degree(2384336)
+261
+
+>>> g.nodes[revNodeIdx[5333895]]
+{'node': <__main__.Node object at 0x7f5061650630>, 'properties': {'id_': 5371725, 'type': 'story', 'by': 'knurdle'}}
+>>> g.graph.degree(5333895)
+258
+
+>>> g.nodes[revNodeIdx[745740]]
+{'node': <__main__.Node object at 0x7f5273534978>, 'properties': {'id_': 752262, 'type': 'story', 'by': 'hajrice'}}
+>>> g.graph.degree(745740)
+254
+>>> calcSize(752262)
+1151
+
